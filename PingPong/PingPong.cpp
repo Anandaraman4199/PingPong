@@ -1,10 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <sfml/System.hpp>
 #include "Game.h"
 #include "Player.h"
 
 int main()
-{
+{	
 	Game game;
 	game.init();
 	while(game.isRunning())

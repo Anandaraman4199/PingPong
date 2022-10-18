@@ -6,7 +6,7 @@ bool Game::onGame = true;
 
 void Game::init()
 {
-	this->window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Ping Pong", sf::Style::Fullscreen);
+	this->window = new sf::RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), "Ping Pong", sf::Style::Fullscreen);
 	this->font.loadFromFile("gamefont.ttf");
 	this->ps1.setFont(this->font);
 	
