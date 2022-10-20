@@ -1,15 +1,19 @@
 #include "Player.h"
 #include <string>
+#include "Game.h"
+
+
 
 float Player::deltaTime = 0;
 
 Player::Player(int id, sf::Vector2f position)
 {
+	
 	this->score = 0;
 	this->id = id;
-	this->playerShape.setSize(sf::Vector2f(15.0f, 100.0f));
+	this->playerShape.setSize(sf::Vector2f(Game::sWidth/192, Game::sHeight/10.8));
 	this->playerShape.setPosition(position);
-	this->playerShape.setOrigin(sf::Vector2f(7.5f, 50.0f));
+	this->playerShape.setOrigin(sf::Vector2f(this->playerShape.getGlobalBounds().width/2, this->playerShape.getGlobalBounds().height / 2));
 }
 
 std::string Player::getScore()
@@ -21,11 +25,16 @@ std::string Player::getScore()
 void Player::addScore()
 {
 	this->score++;
+	if (this->score == Settings::WINSCORE)
+	{
+		Game::winner = id;
+		Game::States = 4;
+	}
 }
 
 bool Player::topBoundary()
 {
-	if (this->playerShape.getPosition().y <= 50.0f)
+	if (this->playerShape.getPosition().y <= this->playerShape.getGlobalBounds().height / 2)
 	{
 		return false;
 	}
@@ -37,7 +46,7 @@ bool Player::topBoundary()
 
 bool Player::bottomBoundary()
 {
-	if (this->playerShape.getPosition().y >= 1030.0f)
+	if (this->playerShape.getPosition().y >=( (Game::sHeight) - (this->playerShape.getGlobalBounds().height / 2)))
 	{
 		return false;
 	}
@@ -50,7 +59,7 @@ bool Player::bottomBoundary()
 void Player::updateMovement()
 {
 	deltaTime = this->clock.restart().asSeconds();
-	this->speed = deltaTime * 1000;
+	this->speed = deltaTime * (Game::sHeight/1.08) ;
 	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))&&(this->id==1)&&(this->topBoundary()))
 	{
 		this->playerShape.move(0,-(this->speed));
@@ -78,4 +87,9 @@ void Player::update()
 void Player::drawPlayer(sf::RenderTarget& target)
 {
 	target.draw(this->playerShape);
+}
+
+Player::~Player()
+{
+	deltaTime = 0;
 }

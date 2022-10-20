@@ -1,13 +1,19 @@
 #include "Ball.h"
-#include "Game.h"
+#include "GameState.h"
 #include "Player.h"
+#include "Game.h"
 #include <ctime>
 #include <iostream>
 #include <cstdlib>
 
+
 Ball::Ball(sf::Vector2f position, Player* p1, Player* p2)
 {
-	this->ballShape.setRadius(8);
+	if (this->pCollision.loadFromFile("playerCollision.wav"))
+	{
+		std::cout << "loaded";
+	}
+	this->ballShape.setRadius(Game::sWidth/240);
 	this->ballShape.setPointCount(10);
 	this->ballShape.setPosition(position);
 	this->findSloap();
@@ -20,7 +26,7 @@ void Ball::findSloap()
 	srand(static_cast<unsigned int>(time(0)));
 	float random = rand() % 2001;
 	this->slope = (random - 1000) / 1000;
-	this->speed = 500;
+	this->speed = Game::sWidth/4.32;
 
 }
 
@@ -28,7 +34,7 @@ void Ball::randomSpeed()
 {
 	srand(static_cast<unsigned int>(time(0)));
 	float random = rand() % 300;
-	this->speed = 500 + random;
+	this->speed = Game::sWidth / 4.32 + random;
 
 }
 
@@ -36,13 +42,13 @@ sf::Vector2f Ball::nextPosition()
 {
 	this->randomSpeed();
 	sf::Vector2f next;
-	if (Game::turn)
+	if (GameState::turn)
 	{
-		next.y = ((this->slope) * (Player::deltaTime*speed));
+		next.y = ((this->slope) * (Player::deltaTime* this->speed));
 	}
 	else
 	{
-		next.y = ((this->slope) * (Player::deltaTime * -speed));
+		next.y = ((this->slope) * (Player::deltaTime * -(this->speed)));
 	}
 	next.x = (next.y) / (this->slope);
 	//std::cout << "\t X: " << next.x << "\t Y: "<<next.y << "\n";
@@ -53,6 +59,7 @@ sf::Vector2f Ball::nextPosition()
 void Ball::update()
 {
 	
+
 	this->topCollision();
 	this->bottomCollision();
 	this->playerCollision();
@@ -62,7 +69,7 @@ void Ball::update()
 
 void Ball::topCollision()
 {
-	if (this->ballShape.getPosition().y <= 8)
+	if (this->ballShape.getPosition().y <= this->ballShape.getRadius())
 	{
 		this->slope = -(this->slope);
 		
@@ -73,7 +80,7 @@ void Ball::topCollision()
 
 void Ball::bottomCollision()
 {
-	if (this->ballShape.getPosition().y >= 1072)
+	if (this->ballShape.getPosition().y >= (Game::sHeight - this->ballShape.getRadius()))
 	{
 		this->slope = -(this->slope);
 		
@@ -83,9 +90,9 @@ void Ball::bottomCollision()
 
 bool Ball::leftCollision()
 {
-	if (this->ballShape.getPosition().x <= 8)
+	if (this->ballShape.getPosition().x <= this->ballShape.getRadius())
 	{
-		Game::turn = false;
+		GameState::turn = false;
 		this->p2->addScore();
 		return true;
 	}
@@ -97,9 +104,9 @@ bool Ball::leftCollision()
 
 bool Ball::rightCollision()
 {
-	if (this->ballShape.getPosition().x >= 1912)
+	if (this->ballShape.getPosition().x >= (Game::sWidth - this->ballShape.getRadius()))
 	{	
-		Game::turn = true;
+		GameState::turn = true;
 		this->p1->addScore();
 		return true;
 	}
@@ -112,21 +119,29 @@ bool Ball::rightCollision()
 
 void Ball::playerCollision()
 {
-	if ((abs(this->ballShape.getPosition().x - this->p1->playerShape.getPosition().x) - (this->ballShape.getRadius() + (this->p1->playerShape.getSize().x / 2)))<=-10)
+	if ((abs(this->ballShape.getPosition().x - this->p1->playerShape.getPosition().x) - (this->ballShape.getRadius() + (this->p1->playerShape.getSize().x / 2)))<=0)
 	{
 		if ((abs(this->ballShape.getPosition().y - this->p1->playerShape.getPosition().y) - (this->ballShape.getRadius() + (this->p1->playerShape.getSize().y / 2))) <= 0)
 		{
-			this->slope = (this->ballShape.getPosition().y-this->p1->playerShape.getPosition().y) / 25;
-			Game::turn = true;
+			sf::Sound sound;
+			sound.setBuffer(this->pCollision);
+			sound.setVolume(100);
+			sound.play();
+			this->slope = (this->ballShape.getPosition().y-this->p1->playerShape.getPosition().y) / (this->p1->playerShape.getSize().y/4);
+			GameState::turn = true;
 		}
 		
 	}
-	if ((abs(this->ballShape.getPosition().x - this->p2->playerShape.getPosition().x) - (this->ballShape.getRadius() + (this->p2->playerShape.getSize().x / 2))) <= -5)
+	if ((abs(this->ballShape.getPosition().x - this->p2->playerShape.getPosition().x) - (this->ballShape.getRadius() + (this->p2->playerShape.getSize().x / 2))) - this->p2->playerShape.getSize().x <= 0)
 	{
 		if ((abs(this->ballShape.getPosition().y - this->p2->playerShape.getPosition().y) - (this->ballShape.getRadius() + (this->p2->playerShape.getSize().y / 2))) <= 0)
 		{
-			this->slope = (this->p2->playerShape.getPosition().y - this->ballShape.getPosition().y) / 25;
-			Game::turn = false;
+			this->slope = (this->p2->playerShape.getPosition().y - this->ballShape.getPosition().y) / (this->p1->playerShape.getSize().y / 4);
+			GameState::turn = false;
+			sf::Sound sound;
+			sound.setBuffer(this->pCollision);
+			sound.setVolume(100);
+			sound.play();
 		}
 		
 	}
@@ -140,6 +155,6 @@ void Ball::drawBall(sf::RenderTarget& target)
 
 Ball::~Ball ()
 {
-	Game::onGame = false;
+	GameState::onGame = false;
 }
 

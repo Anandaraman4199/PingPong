@@ -1,9 +1,20 @@
 ﻿  Ball.cpp
-C:\Users\anand\Documents\GitHub\PingPong\PingPong\Ball.cpp(21,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\anand\Documents\GitHub\PingPong\PingPong\Ball.cpp(30,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\anand\Documents\GitHub\PingPong\PingPong\Ball.cpp(31,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\Ball.cpp(27,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\Ball.cpp(29,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\Ball.cpp(36,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\Ball.cpp(37,36): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   Game.cpp
-C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(14,62): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(11,20): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(12,21): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(16,59): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(16,52): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+  GameState.cpp
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\GameState.cpp(17,93): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\GameState.cpp(17,63): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -12,7 +23,12 @@ C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(14,62): warning C4244
           [
               T=float
           ]
-C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(19,67): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\GameState.cpp(22,98): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\GameState.cpp(22,67): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -21,7 +37,7 @@ C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(19,67): warning C4244
           [
               T=float
           ]
-C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(20,95): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\GameState.cpp(23,97): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -30,7 +46,7 @@ C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(20,95): warning C4244
           [
               T=float
           ]
-C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(20,65): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\GameState.cpp(23,66): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -39,7 +55,7 @@ C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(20,65): warning C4244
           [
               T=float
           ]
-C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(21,100): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\GameState.cpp(24,103): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -48,7 +64,7 @@ C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(21,100): warning C424
           [
               T=float
           ]
-C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(21,70): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\GameState.cpp(24,72): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -57,7 +73,7 @@ C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(21,70): warning C4244
           [
               T=float
           ]
-C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(25,62): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\GameState.cpp(93,94): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -66,7 +82,7 @@ C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(25,62): warning C4244
           [
               T=float
           ]
-C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(29,67): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\GameState.cpp(93,64): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -75,7 +91,7 @@ C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(29,67): warning C4244
           [
               T=float
           ]
-C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(79,63): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\GameState.cpp(98,101): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -84,7 +100,7 @@ C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(79,63): warning C4244
           [
               T=float
           ]
-C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(83,69): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\GameState.cpp(98,70): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -93,10 +109,27 @@ C:\Users\anand\Documents\GitHub\PingPong\PingPong\Game.cpp(83,69): warning C4244
           [
               T=float
           ]
+  MainMenu.cpp
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\MainMenu.cpp(13,46): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\MainMenu.cpp(14,43): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\MainMenu.cpp(15,47): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\MainMenu.cpp(16,43): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
   PingPong.cpp
   Player.cpp
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\Player.cpp(14,72): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\Player.cpp(62,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Settings.cpp
+  Winner.cpp
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\Winner.cpp(11,47): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\Winner.cpp(12,45): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\Winner.cpp(13,42): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
+C:\Users\anand\Documents\GitHub\PingPong\PingPong\Winner.cpp(14,41): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
   Generating code
   Previous IPDB not found, fall back to full compilation.
-  All 114 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 144 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   PingPong.vcxproj -> C:\Users\anand\Documents\GitHub\PingPong\Release\PingPong.exe

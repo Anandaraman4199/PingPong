@@ -9,6 +9,8 @@ private:
 	float slope;
 	int speed;
 
+	sf::SoundBuffer pCollision;
+
 	Player* p1;
 	Player* p2;
 

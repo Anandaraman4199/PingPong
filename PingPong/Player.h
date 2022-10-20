@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Settings.h"
+#include <SFML/Audio.hpp>
 
 
 
@@ -11,6 +13,7 @@ private:
 	int score;
 	int id;
 
+	
 
 	sf::Clock clock;
 	float speed;
@@ -31,5 +34,7 @@ public:
 	void update();
 	void addScore();
 	void drawPlayer(sf::RenderTarget& target);
+
+	~Player();
 };
 
