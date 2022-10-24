@@ -10,6 +10,8 @@ private:
 
 	sf::Font font;
 
+	sf::Music music;
+
 	sf::Event evnt;
 
 	sf::Text wAnnouce;

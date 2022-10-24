@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 class MainMenu
 {
@@ -9,6 +10,8 @@ private:
 	sf::Font font;
 	sf::Text Gamename, Play, Settings, Quit;
 	sf::Event evnt;
+
+	sf::Music menu;
 
 	int mOption = 1;
 

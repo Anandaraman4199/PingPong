@@ -26,6 +26,7 @@ MainMenu::MainMenu(sf::RenderWindow* window)
 	this->Play.setOrigin(sf::Vector2f(this->Play.getGlobalBounds().width / 2, this->Play.getGlobalBounds().height / 2));
 	this->Settings.setOrigin(sf::Vector2f(this->Settings.getGlobalBounds().width / 2, this->Settings.getGlobalBounds().height / 2));
 	this->Quit.setOrigin(sf::Vector2f(this->Quit.getGlobalBounds().width / 2, this->Quit.getGlobalBounds().height / 2));
+	this->menu.setVolume(Game::volume);
 	while (Game::States==0)
 	{
 		this->Mupdate();
@@ -40,24 +41,33 @@ void MainMenu::getInput()
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
 		{
+			this->menu.openFromFile("playerCollision.wav");
+			this->menu.play();
 			this->mOption--;
 			if (mOption < 1)
 			{
 				this->mOption = 3;
 			}
+			
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
 		{
+			this->menu.openFromFile("playerCollision.wav");
+			this->menu.play();
 			this->mOption++;
 			if (mOption > 3)
 			{
 				this->mOption = 1;
 			}
+			
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter))
 		{
+			
 			Game::States = mOption;
+			
 		}
+
 	}
 }
 

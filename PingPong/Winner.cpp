@@ -31,7 +31,9 @@ Winner::Winner(sf::RenderWindow* window)
 	this->pAgain.setOrigin(sf::Vector2f(this->pAgain.getGlobalBounds().width / 2, this->pAgain.getGlobalBounds().height / 2));
 	this->Yes.setOrigin(sf::Vector2f(this->Yes.getGlobalBounds().width / 2, this->Yes.getGlobalBounds().height / 2));
 	this->No.setOrigin(sf::Vector2f(this->No.getGlobalBounds().width / 2, this->No.getGlobalBounds().height / 2));
-
+	this->music.setVolume(Game::volume);
+	this->music.openFromFile("winner.wav");
+	this->music.play();
 
 	while (Game::States == 4)
 	{
@@ -52,6 +54,8 @@ void Winner::getInput()
 			{
 				this->choice = 0;
 			}
+			this->music.openFromFile("playerCollision.wav");
+			this->music.play();
 			
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
@@ -61,6 +65,8 @@ void Winner::getInput()
 			{
 				this->choice = 1;
 			}
+			this->music.openFromFile("playerCollision.wav");
+			this->music.play();
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter))
 		{

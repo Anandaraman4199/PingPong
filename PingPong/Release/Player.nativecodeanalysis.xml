@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\anand\Documents\GitHub\PingPong\PingPong\</FILEPATH>
+      <FILENAME>Player.cpp</FILENAME>
+      <LINE>9</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Player::speed' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Player::{ctor}</FUNCTION>
+    <DECORATED>??0Player@@QAE@HV?$Vector2@M@sf@@@Z</DECORATED>
+    <FUNCLINE>9</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>Player::speed</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

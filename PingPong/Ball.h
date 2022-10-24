@@ -9,16 +9,20 @@ private:
 	float slope;
 	int speed;
 
-	sf::SoundBuffer pCollision;
+	sf::Music pCollision;
 
 	Player* p1;
 	Player* p2;
+	
+	sf::Clock clock;
+
+	float dE;
 
 	void findSloap();
 	void topCollision();
 	void bottomCollision();
 
-	void playerCollision();
+	bool playerCollision();
 
 	void randomSpeed();
 

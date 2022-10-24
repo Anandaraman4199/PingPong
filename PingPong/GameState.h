@@ -9,8 +9,13 @@ private:
 	sf::RenderWindow* window;
 	sf::Event evnt;
 	sf::Font font;
-	sf::Text ps1,ps2;
+	sf::Text ps1,ps2,puc1,puc2,pd1,pd2,ptw,pn1,pn2;
 	sf::VertexArray lines;
+
+	float dE;
+
+
+	sf::Music score;
 
 	sf::Clock clock;
 	

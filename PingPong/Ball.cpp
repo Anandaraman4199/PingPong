@@ -9,16 +9,14 @@
 
 Ball::Ball(sf::Vector2f position, Player* p1, Player* p2)
 {
-	if (this->pCollision.loadFromFile("playerCollision.wav"))
-	{
-		std::cout << "loaded";
-	}
+	
 	this->ballShape.setRadius(Game::sWidth/240);
 	this->ballShape.setPointCount(10);
 	this->ballShape.setPosition(position);
 	this->findSloap();
 	this->p1 = p1;
 	this->p2 = p2;
+	this->pCollision.setVolume(Game::volume);
 }
 
 void Ball::findSloap()
@@ -59,41 +57,60 @@ sf::Vector2f Ball::nextPosition()
 void Ball::update()
 {
 	
-
 	this->topCollision();
 	this->bottomCollision();
-	this->playerCollision();
+	if (this->playerCollision())
+	{
+		this->pCollision.openFromFile("playerCollision.wav");
+		this->pCollision.play();
+	}
 	this->ballShape.move(this->nextPosition());
 
 }
 
 void Ball::topCollision()
 {
-	if (this->ballShape.getPosition().y <= this->ballShape.getRadius())
-	{
-		this->slope = -(this->slope);
-		
+	this->dE = this->dE + this->clock.restart().asSeconds();
 
+	if (((abs((Game::sHeight-Game::sHeight)-this->ballShape.getPosition().y))-this->ballShape.getRadius())<1)
+	{
+		if (this->dE > 0.1)
+		{
+			this->slope = -(this->slope);
+			this->pCollision.openFromFile("playerCollision.wav");
+			this->pCollision.play();
+			this->dE = 0;
+		}
 	}
 
 }
 
 void Ball::bottomCollision()
 {
-	if (this->ballShape.getPosition().y >= (Game::sHeight - this->ballShape.getRadius()))
+
+	this->dE = this->dE + this->clock.restart().asSeconds();
+
+	if (((abs(Game::sHeight - this->ballShape.getPosition().y)) - this->ballShape.getRadius()) < 1)
 	{
-		this->slope = -(this->slope);
-		
+		if (this->dE > 0.1)
+		{
+			this->slope = -(this->slope);
+			this->pCollision.openFromFile("playerCollision.wav");
+			this->pCollision.play();
+			this->dE = 0;
+		}
+
 	}
 
 }
 
 bool Ball::leftCollision()
 {
-	if (this->ballShape.getPosition().x <= this->ballShape.getRadius())
+	if (((abs((Game::sWidth - Game::sWidth) - this->ballShape.getPosition().x)) - this->ballShape.getRadius()) < 1)
 	{
 		GameState::turn = false;
 		this->p2->addScore();
+		
 		return true;
 	}
 	else
@@ -104,10 +121,11 @@ bool Ball::leftCollision()
 
 bool Ball::rightCollision()
 {
-	if (this->ballShape.getPosition().x >= (Game::sWidth - this->ballShape.getRadius()))
+	if (((abs(Game::sWidth - this->ballShape.getPosition().x)) - this->ballShape.getRadius()) < 1)
 	{	
 		GameState::turn = true;
 		this->p1->addScore();
+		
 		return true;
 	}
 	else
@@ -117,33 +135,40 @@ bool Ball::rightCollision()
 
 }
 
-void Ball::playerCollision()
+bool Ball::playerCollision()
 {
-	if ((abs(this->ballShape.getPosition().x - this->p1->playerShape.getPosition().x) - (this->ballShape.getRadius() + (this->p1->playerShape.getSize().x / 2)))<=0)
+	if ((abs(this->ballShape.getPosition().x - this->p1->playerShape.getPosition().x) - (this->ballShape.getRadius() + (this->p1->playerShape.getSize().x / 2)))<=-5)
 	{
 		if ((abs(this->ballShape.getPosition().y - this->p1->playerShape.getPosition().y) - (this->ballShape.getRadius() + (this->p1->playerShape.getSize().y / 2))) <= 0)
 		{
-			sf::Sound sound;
-			sound.setBuffer(this->pCollision);
-			sound.setVolume(100);
-			sound.play();
+			
 			this->slope = (this->ballShape.getPosition().y-this->p1->playerShape.getPosition().y) / (this->p1->playerShape.getSize().y/4);
 			GameState::turn = true;
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 		
 	}
-	if ((abs(this->ballShape.getPosition().x - this->p2->playerShape.getPosition().x) - (this->ballShape.getRadius() + (this->p2->playerShape.getSize().x / 2))) - this->p2->playerShape.getSize().x <= 0)
+	else if ((abs(this->ballShape.getPosition().x - this->p2->playerShape.getPosition().x) - (this->ballShape.getRadius() + (this->p2->playerShape.getSize().x / 2))) - this->p2->playerShape.getSize().x <= 0)
 	{
 		if ((abs(this->ballShape.getPosition().y - this->p2->playerShape.getPosition().y) - (this->ballShape.getRadius() + (this->p2->playerShape.getSize().y / 2))) <= 0)
 		{
 			this->slope = (this->p2->playerShape.getPosition().y - this->ballShape.getPosition().y) / (this->p1->playerShape.getSize().y / 4);
 			GameState::turn = false;
-			sf::Sound sound;
-			sound.setBuffer(this->pCollision);
-			sound.setVolume(100);
-			sound.play();
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 		
+	}
+	else
+	{
+		return false;
 	}
 }
 

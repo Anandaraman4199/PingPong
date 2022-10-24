@@ -25,7 +25,7 @@ std::string Player::getScore()
 void Player::addScore()
 {
 	this->score++;
-	if (this->score == Settings::WINSCORE)
+	if (this->score == Game::winscore)
 	{
 		Game::winner = id;
 		Game::States = 4;
@@ -60,19 +60,19 @@ void Player::updateMovement()
 {
 	deltaTime = this->clock.restart().asSeconds();
 	this->speed = deltaTime * (Game::sHeight/1.08) ;
-	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))&&(this->id==1)&&(this->topBoundary()))
+	if ((sf::Keyboard::isKeyPressed(*Game::p1up))&&(this->id==1)&&(this->topBoundary()))
 	{
 		this->playerShape.move(0,-(this->speed));
 	}
-	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) && (this->id == 1)&&(this->bottomBoundary()))
+	if ((sf::Keyboard::isKeyPressed(*Game::p1dwn)) && (this->id == 1)&&(this->bottomBoundary()))
 	{
 		this->playerShape.move(0, this->speed);
 	}
-	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) && (this->id == 2) && (this->topBoundary()))
+	if ((sf::Keyboard::isKeyPressed(*Game::p2up)) && (this->id == 2) && (this->topBoundary()))
 	{
 		this->playerShape.move(0, -(this->speed));
 	}
-	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) && (this->id == 2) && (this->bottomBoundary()))
+	if ((sf::Keyboard::isKeyPressed(*Game::p2dwn)) && (this->id == 2) && (this->bottomBoundary()))
 	{
 		this->playerShape.move(0, this->speed);
 	}
